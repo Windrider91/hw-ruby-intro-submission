@@ -113,6 +113,8 @@ class BookInStock
 
   #constructor
   def initialize(isbn, price)
+    raise ArgumentError.new("Not valid isbn") if isbn == ''
+    raise ArgumentError.new("Not valid price") if price <= 0
     @isbn = isbn
     @price = price
   end
@@ -123,11 +125,16 @@ class BookInStock
   def price
     @price
   end 
+  def price_as_string
+    return '$%.2f' % @price
+  end
   #setters
   def isbn=(isbn)
+    raise ArgumentError.new("Not valid isbn") if isbn == ''
     @isbn = isbn
   end
   def price=(price)
+    raise ArgumentError.new("Not valid price") if price <= 0
     @price = price
   end
   
