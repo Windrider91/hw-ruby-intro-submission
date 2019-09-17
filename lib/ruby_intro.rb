@@ -89,20 +89,15 @@ end
 
 def binary_multiple_of_4? s
   def binary_multiple_of_4?(s)
-    puts s
-    puts s.gsub(/[01]/,'')
-    if s.gsub(/[01]/,'') != ''
-      return false
-    else
-      puts s + " is a binary number"
-      if s.split(//).last(2).join == "00"
-        puts s.split(//).last(2).join
-        puts "Is a mutliple of 4"
+    if s.count('01') == s.size and s.size != 0
+      #check if the last two digits are '00' or if number is just 0
+      if s.split(//).last(2).join == "00" or s.to_s == "0"
         return true
       else
-        puts "Is not a multiple of 4"
         return false
       end
+    else
+      return false
     end
   end
 end
